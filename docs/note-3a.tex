@@ -1,0 +1,338 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{theoremA}{Theorem A (Hyperbola Sterility)}
+\newtheorem*{theoremB}{Theorem B (Line Sterility, modulo one named sliver)}
+\newtheorem*{corollary*}{Corollary}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\J}{\operatorname{J}}
+
+\title{Sterility of triangular pole-hiding\\ over lines and hyperbolas in $\C^2$\thanks{Preprint draft rev-2 (July 23, 2026), circulated for review. Author-of-record and venue are being finalized; the mathematics was derived by the AI systems named in \S7 under the direction of the human author. Comments welcome.}}
+\author{Claude (Fable~5, Anthropic) \and GPT-5.6-sol (OpenAI) \and Liam Corrigan}
+\date{July 23, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Jacobian conjecture fails in dimension $n \ge 3$: the July 2026
+counterexample of Alp\"oge--Fable is a Keller map of $\C^3$ built from a
+rational coordinate whose poles are hidden on a hyperplane and cancelled by a
+ramified composition. We study whether this mechanism --- \emph{triangular
+pole hiding} --- can operate in the plane, where the conjecture remains open.
+We formalize the mechanism as a \emph{scaffold} over a pole curve
+$\Gamma \subset \C^2$ and prove two sterility theorems. Over the hyperbola
+$\Gamma = \{xy = 1\}$ no scaffold exists at all. Over the line
+$\Gamma = \{x = 0\}$, every scaffold in every stratum of an explicit,
+machine-verified partition of the configuration space save one named sliver is
+an affine triangular automorphism; a scaffold outside the tame side would
+\emph{be} a counterexample to the two-dimensional conjecture. In the remaining
+sliver (composite-jewel cells) we prove the minimal charts pair-barren,
+exhibit the stratum's genuine pairs (a shear orbit of the germ), prove every
+scaffold on that orbit impossible at every $P$-degree, and confine any
+survivor to non-shear tail deformations with $\deg_W P \ge 4$ and
+$3 \mid J$. The proofs run on a small amount of new machinery --- a graded
+fat-edge kill, a uniform residue theorem with ratio $-1/(N-1)$ and a coset
+refinement, a trace identity, and fertility/residue laws for composite cone
+edges --- each of which ships with an exact-arithmetic machine certificate.
+Byte-frozen copies of the two core theorem documents were hash-committed
+publicly on July 23, 2026, prior to this note.
+\end{abstract}
+
+\section{The mechanism}
+
+\textbf{History.} The temptation dates to the first wrong proof: Kraus's 1884
+argument \cite{Kraus1884,RD2025} failed exactly at controlling ramification at
+infinity. Vitushkin \cite{Vitushkin1999} constructed the honest prototype: a
+rational map of $\C^2$ with constant Jacobian determinant $-2$ that is
+non-injective --- legal only because one coordinate carries a pole, on a line.
+For twenty-seven years the question was whether the pole can be
+\emph{cancelled} without destroying the constant Jacobian. In July 2026 it was
+answered in dimension~3: the map
+\begin{align*}
+F(x,y,z) = \bigl(&(1+xy)^3 z + y^2(1+xy)(4+3xy),\\
+&y + 3x(1+xy)^2 z + 3xy^2(4+3xy),\ \ 2x - 3x^2y - x^3z\bigr),
+\end{align*}
+announced by Alp\"oge and derived by the Claude model Fable \cite{Alpoge2026},
+is a polynomial Keller map ($\det JF \equiv -2$) with an explicit fiber
+collision; we have verified both facts in exact arithmetic (\S5).
+Structurally $F = H \circ G$ where $G$ carries the rational coordinate
+$w = y + 1/x$ (poles on the hyperplane $\{x = 0\}$) and $H$ is a $3\!:\!1$
+ramified cubic whose Jacobians cancel to $-2$
+\cite{SBS2026,Tao2026,Gallagher2026}. The conjecture is therefore false for
+all $n \ge 3$ (and the Dixmier conjecture falls by stable equivalence
+\cite{Zhang2026}); dimension~2 remains open.
+
+\textbf{The plane question.} The published lenses on why $F$ works --- Tao's
+multiplication-map digestion \cite{Tao2026}, the Sawin--Levinson
+$\mathbb{A}^1$-bundle picture and Gallagher's non-properness account
+\cite{Gallagher2026} --- all use the third dimension as room to hide
+ramification. Our question is the mechanism's shadow in $\C^2$: can a
+rational coordinate with poles on a curve $\Gamma$ be polynomially recombined
+into a plane Keller map? The pole locus $\Gamma$ plays the role of the
+Jelonek non-properness set.
+
+\section{Scaffolds and the dichotomy}
+
+\begin{definition}
+Fix a curve $\Gamma \subset \C^2$. A \emph{scaffold over $\Gamma$} is a
+triple $(w, c, P)$ with $w \in \C(x,y)$ having poles exactly on $\Gamma$;
+$c \in \C[x,y]$; and $P \in \C[W, C]$ such that $f := P(w, c) \in \C[x,y]$
+(the poles cancel) and $\det \J(f, c) = \kappa \in \C^{*}$. Write
+$D := \deg_W P$.
+\end{definition}
+
+Over the line $\Gamma = \{x=0\}$, normalize $w = a/x^{d}$ with $x \nmid a$
+and $c = x\,u$. The chain rule forces the \emph{pair equation}
+\[
+\J(w, c) = \lambda x^{m}, \qquad \lambda \in \C^{*},\ m \in \mathbb{Z},
+\]
+and differentiating $f = P(w,c)$ gives the \emph{master identity}
+$P_W(w, c) = \mu x^{-m}$ with $\mu = \kappa/\lambda$. Pairs $(w,c)$
+satisfying the pair equation are the raw material; scaffolds are pairs that
+additionally support $P$. Killing pairs kills scaffolds; several strata
+contain genuine pairs that die only at the $P$-layer.
+
+\begin{theorem}[Line Dichotomy]
+For any line scaffold, $u(0,y)$ is forced to be a nonzero constant
+$\gamma$, and exactly one of the following holds:
+\begin{enumerate}
+\item $u$ is constant, and the scaffold is an affine triangular
+automorphism; or
+\item $u$ is nonconstant, and $F = (f, c)$ is a Keller map of $\C^2$ that
+is not injective: the fiber $\{c = 0\} = \{x = 0\} \sqcup \{u = 0\}$ has two
+components glued by $P$. Such a scaffold \emph{is} a counterexample to the
+two-dimensional Jacobian conjecture.
+\end{enumerate}
+\end{theorem}
+
+So the stakes are exact: proving every line scaffold lands in case (1) is
+precisely proving this mechanism cannot falsify the plane conjecture over a
+line.
+
+\section{The two theorems}
+
+\begin{theoremA}
+Over $\Gamma = \{xy = 1\}$ no scaffold exists at all.
+\end{theoremA}
+
+\begin{theoremB}
+Partition line configurations by the fiber hull of $c - t$ at $x \to 0$
+(the lower-left Newton hull from the $-t$ vertex $(0,0)$ to the top vertex
+$(\alpha, N)$, $N := \deg_y c$). The partition of Table~\ref{tab:strata} is
+complete --- the classifier is executable, and a $2{,}100$-shape randomized
+sweep lands every candidate in exactly one stratum (\S5). In every stratum
+except E4, no scaffold with nonconstant $u$ exists; consequently every
+scaffold there is an affine triangular automorphism.
+\end{theoremB}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Stratum & Configuration & Closing result \\
+\midrule
+A & single hull edge, open-edge support & discriminant-ring evaluation \\
+B & single edge, no open-edge support & Fat-Edge Kill ($\J(w,c) \notin \C[x,1/x]$, all $m$) \\
+C & $\ge 2$ edges, first edge bare-ramified & Ramified-Edge Kill (same graded proof) \\
+D & $\ge 2$ edges, $N_1 \ge 2$, multi-supported & divisor-law kill + chart recursion \\
+E0 & $\ge 3$ edges, $N_1 = 1$, simple deeper roots & third-edge undershoot + recursion \\
+E1 & two edges, binomial cone edge & $N=2$: jewel ladder; $N \ge 3$: Uniform Residue \\
+E2 & composite cone, repeated root & no-conspiracy telescoping \\
+E3 & composite cone, off the fertile locus & Composite-Cone Fertility Lemma \\
+E4 & composite cone, \emph{on} the fertile locus & \textbf{the sliver} --- see below \\
+F & $\ge 3$ edges, repeated deeper roots & no-conspiracy + trace/character kills \\
+\bottomrule
+\end{tabular}
+\caption{The ten strata of the line partition and their closing results.}
+\label{tab:strata}
+\end{table}
+
+\textbf{The sliver, honestly scoped.} E4 is nonempty as a \emph{pair}
+stratum: at the first fertile family ($(N, r) = (3, 6)$, interior cone
+coefficient $t = \pm\sqrt3$, pole depths $k \equiv 1 \pmod 3$;
+machine-confirmed $k \in \{1, 4, 7\}$) the local germ exists in closed form,
+$w_{\mathrm{germ}} = -\lambda(x^{-1} + \sqrt3\, x^2 Y)$ at $k = 1$, and the
+shear $S \colon Y \mapsto Y + \gamma x$ carries it to a genuine pair family
+--- the composite analog of the binomial shear orbit. We prove:
+\begin{enumerate}
+\item the residue ratios at the cone's punctures are primitive cube roots of
+unity, so the residue clash kills every scaffold with $3 \nmid J$;
+\item the character/divisor bound confines survivors to $D \ge 4$;
+\item minimal charts (no tails beyond the forced $\gamma x$) are barren at
+the pair level: the bucket march terminates with an unshieldable cokernel
+obstruction at the germ's first $\gamma$-rung, with core $(k-2)\,t\gamma\lambda$,
+at $k = 1, 4, 7$ and both signs of $t$;
+\item \emph{the entire shear locus is scaffold-dead, for every realization
+$\sigma$ and every $P$-degree}: the master identity decouples over the germ
+pair's weight grading; functional independence ($\J(w,c) \neq 0$) forces
+every non-target weight line of $P_W$ to vanish as a polynomial; a nonzero
+$\mu$ then forces the single coefficient $a_{\sigma-1,0} \neq 0$, whose
+contribution to the sheared $f \circ S$ is an uncancellable leading pole
+$a_{\sigma-1,0}(-\lambda)^{\sigma-1} x^{-(\sigma-1)}$ along $Y = 0$.
+\end{enumerate}
+What remains open of the entire program: non-shear tail deformations of
+these pairs --- nonempty at the pair level (an exact window candidate
+exists) and confined to $D \ge 4$ with $3 \mid J$ --- which we expect to
+fall to the $\xi$-$\psi$-calculus, the cone ODE being first order in $\xi$.
+Every other stratum is closed.
+
+\begin{corollary*}
+The mechanism that falsifies the Jacobian conjecture in dimension~3 cannot
+produce a plane counterexample over the standard hyperbola, nor over a line
+outside stratum E4 --- and inside E4 only via non-shear tail deformations
+with $D \ge 4$ and $3 \mid J$.
+\end{corollary*}
+
+\textbf{Not claimed:} other pole curves (general $\C^{*}$-embeddings, higher
+genus, reducible $\Gamma$), non-triangular compositions, or the
+two-dimensional conjecture itself.
+
+\section{The new machinery (statements)}
+
+\begin{theorem}[Fat-Edge Kill / Staircase Sterility]
+Suppose the support of $c$ satisfies the strict collapse hypothesis for the
+grading $\omega(i, j) = Ni - \alpha j$: $\omega > 0$ off the top vertex
+$b\,x^{\alpha}y^{N}$. Then for every line candidate $w$,
+$\J(w, c) \notin \C[x, 1/x]$ --- no pair, for any $m \in \mathbb{Z}$, zero
+included. The proof is one page: the top-vertex bracket
+$L_0 = \J(\,\cdot\,, b x^{\alpha} y^{N})$ is diagonal in the monomial basis
+with eigenvalue $b\,\omega$ and shifts $y$-degree by $N-1$. A verbatim
+$\omega_1$-graded variant (Theorem$'$) kills bare-ramified first edges.
+\end{theorem}
+
+\begin{theorem}[Uniform Residue]
+In every fertile binomial cell $(N, k, r)$ --- fertility being exactly
+$r \mid Nk$ and $r \nmid k$ --- the normalized germ residue ratio at every
+puncture is $-1/(N-1)$, independent of $k$, $r$, and all tails. The induced
+clash forces $(N-1)^J = 1$ against the master identity, killing all
+scaffolds in stratum E1 with $N \ge 3$; $N = 2$ (ratio $-1$, silent on odd
+$D$) falls to the jewel ladder and parity-pole argument instead. At
+$d = \gcd(N-1, r) > 1$ the germ decomposes over $\zeta_d$-cosets; the
+operator preserves cosets and a kernel-exclusion argument closes the
+refinement (witnessed at $(3,2,6)$).
+\end{theorem}
+
+\begin{theorem}[Composite-cone laws]
+With interior cone-edge support (cone polynomial $E(\xi)$,
+$d = \gcd(N-1, r) > 1$): the germ recursion acquires a termination condition
+$P_k(t) = 0$, an explicit polynomial per $k$ (at $(3,6)$:
+$P_1 \propto t^2 - 3$, $P_2 \propto t(2t^2-9)$), off whose zero locus the
+cone is germ-barren (closing E3); on it, the per-root residue ratio is
+\[
+\frac{\varphi(\rho)}{\varphi(0)} = \frac{d}{(N-1)\,\rho\,E'(\rho)},
+\]
+whose values at the first fertile family are the primitive cube roots of
+unity above. The binomial constant $-1/(N-1)$ is the special case
+$E = 1 + \xi^d$ evaluated at its roots.
+\end{theorem}
+
+Alongside these run a trace identity (sum of residues over each cone
+fiber's punctures vanishes), the divisor-law/no-conspiracy telescoping for
+multi-edge staircases, and the sharpness objects: the $N = 2$ \emph{jewel}
+pairs (e.g.\ $w^2 - 4c = x^{-2}$ with involution
+$(x,y) \mapsto (-x,\, y + 1/x^5)$), the shear orbits, and the
+composite-jewel germs. All die at the $P$-layer or in the confined sliver
+--- none assembles into a counterexample.
+
+\section{Machine certificates and priority}
+
+All results are backed by exact-arithmetic sympy witnesses (no floats, no
+Monte Carlo in any proof-bearing step): witness suites totalling over
+$3{,}000$ individually asserted checks, including the partition classifier
+($2{,}100$ randomized shapes plus a named zoo, every shape in exactly one
+stratum), the bucket-march records for the composite-jewel kills, and the
+corrected sheared-row $P$-layer sweeps. Six independent adversarial model
+audits (two GPT-family, GPT-Pro, Gemini, Claude-family, and a codex
+delta-audit of the newest results) ran against the documents; every
+confirmed finding is folded and changelogged, including one repair
+(the $\gcd$-coset gap) independently re-derived by two models
+coefficient-for-coefficient, and the delta-audit's contribution of the
+all-$(\sigma, D)$ shear-locus argument. The witness repository accompanies
+this note.
+
+Priority: byte-frozen copies of the two core theorem documents were
+committed publicly by SHA-256 on July 23, 2026 (X/Twitter), prior to this
+note:
+\begin{center}\footnotesize\texttt{
+a40f311c2ee8aaabd3dada15b05dca81ef9dda540dcda4bb18c1b98352548dfc}\\
+\footnotesize\texttt{
+58633ec91872c9746f3d6192d38dce0c106f88d94d0637dcf5f5815f3b06dc78}
+\end{center}
+This note reveals the committed content; the frozen files ship with the
+witness repository.
+
+\section{Relation to prior and concurrent work}
+
+Gwo\'zdziewicz \cite{Gwozdziewicz1993} proved a Keller map injective on one
+line is an automorphism --- a foil: our theorems constrain the
+\emph{mechanism}, not the map's restriction. The Newton-polygon school
+(Garc\'ia Vicente--Gonz\'alez Villa et al., Makar-Limanov) supplies the
+polygon vocabulary; our fiber hull, gradings, and residue calculus run at
+the pair-equation level the polygon alone does not see, and the school's own
+papers state that boundary. Orevkov's analytic realizations of Vitushkin's
+covering \cite{Orevkov} are the closest classical geometry to the
+pole-hiding lens. Concurrently with this note, Shaska \cite{Shaska2026}
+proved every $\mathbb{G}_m$-equivariant (graded) Keller map of $\C^2$ is an
+automorphism; the class boundary is exactly our subject --- scaffolds are
+not graded, and the tails that break equivariance are where jewels, shears,
+and the sliver live. On the fiber-topology side we use
+Abhyankar--Moh--Suzuki, Zaidenberg--Lin, and Kaliman's classification in the
+$D = 1$ closure, and Masuda--Miyanishi sits adjacent to the jewel geometry.
+To our knowledge the sterility theorems, the fat-edge kill, the uniform
+residue law with its coset refinement, the trace identity, and the
+composite-cone fertility/residue laws are new.
+
+\section{Methods and contributions}
+
+The mathematics in this program was derived by AI systems under human
+direction, in the lineage of the dimension-3 counterexample itself
+\cite{Alpoge2026} and Gallagher's follow-up \cite{Gallagher2026}. Primary
+derivations and all machine certificates: Claude (Fable~5, Anthropic),
+across a multi-session campaign with persistent memory and a theorem
+ledger. Independent adversarial audits and parallel derivations:
+GPT-5.6-sol (OpenAI), whose $(3,2,6)$ coset analysis matched the primary
+derivation coefficient-for-coefficient, and whose delta-audit of the
+composite-jewel results corrected one reduction step and contributed the
+core of the all-$(\sigma,D)$ shear-locus argument; additional audit rounds
+by GPT-Pro, Gemini, and Claude-family reviewers. Direction, verification
+infrastructure, cross-model transport, and the decision to work the plane
+question: Liam Corrigan. Every theorem-bearing claim traces to an
+exact-arithmetic witness script; audit history and rebuttals are preserved
+in the working documents.
+
+\begin{thebibliography}{99}\footnotesize
+\bibitem{Alpoge2026} L.~Alp\"oge, announcement of the $\C^3$ counterexample
+(derived by Claude Fable~5), X, July 19--20, 2026.
+\url{https://x.com/__alpoge__/status/2079028340955197566}
+\bibitem{Gallagher2026} A.~Gallagher (with GPT-5.6-sol), \emph{The Jacobian
+counterexample, explained}, Zenodo, July 2026.
+\href{https://doi.org/10.5281/zenodo.21479195}{doi:10.5281/zenodo.21479195};
+\url{https://jacobianfun.org}
+\bibitem{Tao2026} T.~Tao, blog post, July 21, 2026.
+\bibitem{SBS2026} \emph{The new counterexample to the Jacobian conjecture},
+Secret Blogging Seminar, July 20, 2026.
+\bibitem{Zhang2026} Z.~Zhang, consequences note (Dixmier,
+Mathieu--$SU(3)$, Gaussian moments), July 20, 2026.
+\bibitem{Vitushkin1999} A.~G.~Vitushkin, \emph{On polynomial mappings of}
+$\C^2$, Math.\ Notes \textbf{66}:2 (1999), 245--249. [Springer PDF pull
+pending before submission; formula currently cited via verified paraphrase.]
+\bibitem{Kraus1884} L.~Kraus, 1884; see \cite{RD2025}.
+\bibitem{RD2025} A.~Rodr\'iguez D\'iaz, C.\ R.\ Math.\ (2025);
+arXiv:2512.23614.
+\bibitem{Gwozdziewicz1993} J.~Gwo\'zdziewicz, alg-geom/9305008.
+\bibitem{Orevkov} S.~Yu.~Orevkov, 1986/87 and 1996 (analytic realization
+papers).
+\bibitem{Shaska2026} T.~Shaska, \emph{Graded Keller maps},
+arXiv:2607.20210, July 22, 2026.
+\end{thebibliography}
+
+\end{document}

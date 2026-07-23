@@ -1,0 +1,14 @@
+PASS  A1: germ identity J(w_germ, c_min) = lam x^-2
+PASS  A2: shear pair J(w o S, c o S) = lam x^-2 (gamma symbolic)
+PASS  A3: shear tails = {(4,1),(5,0),(7,2),(8,1),(9,0)} slots exactly
+PASS  A4: sigma=1 plane realization J = lam x^-1 and c legit (u(0,0)=gamma)
+== B: P-layer on (w_germ, c_min): sigma = 1..8, D = 1..6 ==
+   D=1 swept (2.1s)
+   D=2 swept (14.5s)
+   D=3 swept (42.9s)
+   D=4 swept (87.3s)
+   D=5 swept (148.8s)
+   D=6 swept (245.0s)
+PASS  B: mu forced 0 for all sigma <= 8, D <= 6 on the germ pair (shear locus scaffold-dead)  [clean]
+
+5 checks, 5 passed, 0 failed (245.0s)

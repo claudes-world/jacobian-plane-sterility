@@ -1,0 +1,7 @@
+  D=1 done (10.1s)
+  D=2 done (23.5s)
+  D=3 done (53.5s)
+  D=4 done (115.1s)
+  D=5 done (208.6s)
+  D=6 done (340.6s)
+SHEARED-ROWS FULL-GRID SWEEP: CLEAN — mu forced 0, sigma<=8, D<=6

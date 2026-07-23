@@ -1,0 +1,291 @@
+{
+ "meta": {
+  "mode": "full",
+  "max_bucket": 11,
+  "max_knob_wt": 12,
+  "bmax": 15,
+  "amax": 25,
+  "e2": true,
+  "total_seconds": 3.8
+ },
+ "buckets": [
+  {
+   "bucket": -4,
+   "n_mons": 8,
+   "n_eqm": 9,
+   "cokernel_dim": 1,
+   "nonzero_conds": 0,
+   "shield": null,
+   "shield_value": null,
+   "core_canonical": null,
+   "cond_canonical": null,
+   "gauge_leak": null,
+   "terminal": false,
+   "seconds": 0.03
+  },
+  {
+   "bucket": -3,
+   "n_mons": 8,
+   "n_eqm": 9,
+   "cokernel_dim": 1,
+   "nonzero_conds": 0,
+   "shield": null,
+   "shield_value": null,
+   "core_canonical": null,
+   "cond_canonical": null,
+   "gauge_leak": null,
+   "terminal": false,
+   "seconds": 0.02
+  },
+  {
+   "bucket": -2,
+   "n_mons": 7,
+   "n_eqm": 8,
+   "cokernel_dim": 1,
+   "nonzero_conds": 0,
+   "shield": null,
+   "shield_value": null,
+   "core_canonical": null,
+   "cond_canonical": null,
+   "gauge_leak": null,
+   "terminal": false,
+   "seconds": 0.02
+  },
+  {
+   "bucket": -1,
+   "n_mons": 8,
+   "n_eqm": 9,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k3_2",
+   "shield_value": "0",
+   "core_canonical": "0",
+   "cond_canonical": "-4*E2*k2_1*k3_2/9 + 20*E2*k3_2*k5_3/81",
+   "gauge_leak": [
+    "E2"
+   ],
+   "terminal": false,
+   "pivot_monomial": [
+    1,
+    1
+   ],
+   "seconds": 0.04
+  },
+  {
+   "bucket": 0,
+   "n_mons": 8,
+   "n_eqm": 9,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k5_3",
+   "shield_value": "0",
+   "core_canonical": "0",
+   "cond_canonical": "-k5_3*lam/3",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    0,
+    0
+   ],
+   "seconds": 0.07
+  },
+  {
+   "bucket": 1,
+   "n_mons": 8,
+   "n_eqm": 9,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k4_2",
+   "shield_value": "3*gam",
+   "core_canonical": "-3*gam*lam",
+   "cond_canonical": "-3*gam*lam + k4_2*lam",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    2,
+    1
+   ],
+   "seconds": 0.18
+  },
+  {
+   "bucket": 2,
+   "n_mons": 8,
+   "n_eqm": 9,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k3_1",
+   "shield_value": "2*k6_3/3",
+   "core_canonical": "0",
+   "cond_canonical": "k3_1*lam - 2*k6_3*lam/3",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    1,
+    0
+   ],
+   "seconds": 0.11
+  },
+  {
+   "bucket": 3,
+   "n_mons": 8,
+   "n_eqm": 9,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k2_0",
+   "shield_value": "k5_2/3",
+   "core_canonical": "0",
+   "cond_canonical": "-6*k2_0*lam + 2*k5_2*lam",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    3,
+    1
+   ],
+   "seconds": 0.12
+  },
+  {
+   "bucket": 4,
+   "n_mons": 8,
+   "n_eqm": 9,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k4_1",
+   "shield_value": "-k2_1**2/2 + k7_3/2",
+   "core_canonical": "k2_1**2*lam",
+   "cond_canonical": "k2_1**2*lam + 2*k4_1*lam - k7_3*lam",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    2,
+    0
+   ],
+   "seconds": 0.15
+  },
+  {
+   "bucket": 5,
+   "n_mons": 7,
+   "n_eqm": 8,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k3_0",
+   "shield_value": "gam*k2_1 + k6_2/3",
+   "core_canonical": "9*gam*k2_1*lam",
+   "cond_canonical": "9*gam*k2_1*lam - 9*k3_0*lam + 3*k6_2*lam",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    4,
+    1
+   ],
+   "seconds": 0.2
+  },
+  {
+   "bucket": 6,
+   "n_mons": 8,
+   "n_eqm": 9,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k5_1",
+   "shield_value": "3*gam**2 + 4*k8_3/9",
+   "core_canonical": "-9*gam**2*lam",
+   "cond_canonical": "-9*gam**2*lam + 3*k5_1*lam - 4*k8_3*lam/3",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    3,
+    0
+   ],
+   "seconds": 0.23
+  },
+  {
+   "bucket": 7,
+   "n_mons": 7,
+   "n_eqm": 8,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k4_0",
+   "shield_value": "-gam*k6_3/3 + k2_1*k5_2/3 + k7_2/3",
+   "core_canonical": "-4*lam*(gam*k6_3 - k2_1*k5_2)",
+   "cond_canonical": "-4*gam*k6_3*lam + 4*k2_1*k5_2*lam - 12*k4_0*lam + 4*k7_2*lam",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    5,
+    1
+   ],
+   "seconds": 0.25
+  },
+  {
+   "bucket": 8,
+   "n_mons": 7,
+   "n_eqm": 8,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k6_1",
+   "shield_value": "2*gam*k5_2 + k2_1**3/2 + k2_1*k7_3/6 - k6_3**2/9 + 5*k9_3/12",
+   "core_canonical": "-2*lam*(36*gam*k5_2 + 9*k2_1**3 + 3*k2_1*k7_3 - 2*k6_3**2)/9",
+   "cond_canonical": "-8*gam*k5_2*lam - 2*k2_1**3*lam - 2*k2_1*k7_3*lam/3 + 4*k6_1*lam + 4*k6_3**2*lam/9 - 5*k9_3*lam/3",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    4,
+    0
+   ],
+   "seconds": 0.41
+  },
+  {
+   "bucket": 9,
+   "n_mons": 7,
+   "n_eqm": 8,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k5_0",
+   "shield_value": "-gam*k2_1**2/2 - gam*k7_3/2 + k2_1*k6_2/3 - k5_2*k6_3/9 + k8_2/3",
+   "core_canonical": "-5*lam*(9*gam*k2_1**2 + 9*gam*k7_3 - 6*k2_1*k6_2 + 2*k5_2*k6_3)/6",
+   "cond_canonical": "-15*gam*k2_1**2*lam/2 - 15*gam*k7_3*lam/2 + 5*k2_1*k6_2*lam - 15*k5_0*lam - 5*k5_2*k6_3*lam/3 + 5*k8_2*lam",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    6,
+    1
+   ],
+   "seconds": 0.53
+  },
+  {
+   "bucket": 10,
+   "n_mons": 7,
+   "n_eqm": 8,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k7_1",
+   "shield_value": "2*gam*k6_2 + 2*k10_3/5 + k2_1**2*k6_3/3 + 2*k2_1*k8_3/9 + k5_2**2/3 - k6_3*k7_3/5",
+   "core_canonical": "-lam*(90*gam*k6_2 + 15*k2_1**2*k6_3 + 10*k2_1*k8_3 + 15*k5_2**2 - 9*k6_3*k7_3)/9",
+   "cond_canonical": "-10*gam*k6_2*lam - 2*k10_3*lam - 5*k2_1**2*k6_3*lam/3 - 10*k2_1*k8_3*lam/9 - 5*k5_2**2*lam/3 + k6_3*k7_3*lam + 5*k7_1*lam",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    5,
+    0
+   ],
+   "seconds": 0.63
+  },
+  {
+   "bucket": 11,
+   "n_mons": 6,
+   "n_eqm": 7,
+   "cokernel_dim": 1,
+   "nonzero_conds": 1,
+   "shield": "k6_0",
+   "shield_value": "gam**3 - gam*k2_1*k6_3 - 5*gam*k8_3/9 - k2_1**2*k5_2/6 + k2_1*k7_2/3 - k5_2*k7_3/6 - k6_2*k6_3/9 + k9_2/3",
+   "core_canonical": "lam*(18*gam**3 - 18*gam*k2_1*k6_3 - 10*gam*k8_3 - 3*k2_1**2*k5_2 + 6*k2_1*k7_2 - 3*k5_2*k7_3 - 2*k6_2*k6_3)",
+   "cond_canonical": "18*gam**3*lam - 18*gam*k2_1*k6_3*lam - 10*gam*k8_3*lam - 3*k2_1**2*k5_2*lam + 6*k2_1*k7_2*lam - 3*k5_2*k7_3*lam - 18*k6_0*lam - 2*k6_2*k6_3*lam + 6*k9_2*lam",
+   "gauge_leak": null,
+   "terminal": false,
+   "pivot_monomial": [
+    7,
+    1
+   ],
+   "seconds": 0.76
+  }
+ ]
+}

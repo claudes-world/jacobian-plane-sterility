@@ -1,0 +1,187 @@
+{
+ "meta": {
+  "cell": "(N,r)=(3,6) t1=sqrt(3) composite-jewel",
+  "k": 4,
+  "mode": "minimal",
+  "e1": false,
+  "max_bucket": 4,
+  "bmax": 16,
+  "amax": 50,
+  "total_seconds": 3.1,
+  "terminal": {
+   "bucket": -1,
+   "core": "2*sqrt(3)*gam*lam"
+  }
+ },
+ "buckets": [
+  {
+   "bucket": -8,
+   "n_mons": 16,
+   "n_eqm": 18,
+   "cokernel_dim": 2,
+   "kernel_dim": 0,
+   "nonzero_conds": 0,
+   "shield": null,
+   "shield_value": null,
+   "core_canonical": null,
+   "cond_canonical": null,
+   "gauge_leak": null,
+   "terminal": false,
+   "kernel_support": [],
+   "seconds": 0.4
+  },
+  {
+   "bucket": -7,
+   "n_mons": 17,
+   "n_eqm": 19,
+   "cokernel_dim": 3,
+   "kernel_dim": 1,
+   "nonzero_conds": 0,
+   "shield": null,
+   "shield_value": null,
+   "core_canonical": null,
+   "cond_canonical": null,
+   "gauge_leak": null,
+   "terminal": false,
+   "kernel_support": [
+    [
+     [
+      0,
+      2
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      6,
+      4
+     ],
+     [
+      9,
+      5
+     ],
+     [
+      12,
+      6
+     ]
+    ]
+   ],
+   "seconds": 0.28
+  },
+  {
+   "bucket": -6,
+   "n_mons": 17,
+   "n_eqm": 19,
+   "cokernel_dim": 2,
+   "kernel_dim": 0,
+   "nonzero_conds": 0,
+   "shield": null,
+   "shield_value": null,
+   "core_canonical": null,
+   "cond_canonical": null,
+   "gauge_leak": null,
+   "terminal": false,
+   "kernel_support": [],
+   "seconds": 0.39
+  },
+  {
+   "bucket": -5,
+   "n_mons": 17,
+   "n_eqm": 19,
+   "cokernel_dim": 2,
+   "kernel_dim": 0,
+   "nonzero_conds": 0,
+   "shield": null,
+   "shield_value": null,
+   "core_canonical": null,
+   "cond_canonical": null,
+   "gauge_leak": null,
+   "terminal": false,
+   "kernel_support": [],
+   "seconds": 0.45
+  },
+  {
+   "bucket": -4,
+   "n_mons": 17,
+   "n_eqm": 19,
+   "cokernel_dim": 3,
+   "kernel_dim": 1,
+   "nonzero_conds": 0,
+   "shield": null,
+   "shield_value": null,
+   "core_canonical": null,
+   "cond_canonical": null,
+   "gauge_leak": null,
+   "terminal": false,
+   "seconds": 0.48
+  },
+  {
+   "bucket": -3,
+   "n_mons": 17,
+   "n_eqm": 19,
+   "cokernel_dim": 2,
+   "kernel_dim": 0,
+   "nonzero_conds": 0,
+   "shield": null,
+   "shield_value": null,
+   "core_canonical": null,
+   "cond_canonical": null,
+   "gauge_leak": null,
+   "terminal": false,
+   "seconds": 0.53
+  },
+  {
+   "bucket": -2,
+   "n_mons": 17,
+   "n_eqm": 19,
+   "cokernel_dim": 2,
+   "kernel_dim": 0,
+   "nonzero_conds": 0,
+   "shield": null,
+   "shield_value": null,
+   "core_canonical": null,
+   "cond_canonical": null,
+   "gauge_leak": null,
+   "terminal": false,
+   "seconds": 0.39
+  },
+  {
+   "bucket": -1,
+   "n_mons": 16,
+   "n_eqm": 19,
+   "cokernel_dim": 1,
+   "kernel_dim": 0,
+   "nonzero_conds": 1,
+   "shield": null,
+   "shield_value": null,
+   "core_canonical": "2*sqrt(3)*gam*lam",
+   "cond_canonical": "2*sqrt(3)*gam*lam",
+   "gauge_leak": null,
+   "terminal": true,
+   "pivot_monomial": [
+    -1,
+    0
+   ],
+   "cokernel_functional": {
+    "(-1, 0)": "1"
+   },
+   "shields_tried": [
+    [
+     3,
+     1
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     9,
+     3
+    ]
+   ],
+   "cond_knob_deps": [],
+   "seconds": 0.15
+  }
+ ]
+}

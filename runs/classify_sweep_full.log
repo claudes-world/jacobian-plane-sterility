@@ -1,0 +1,39 @@
+== named zoo ==
+PASS  flagship (3,1,3) cell, sigma=1: E1 (expected E1)  [N=2: T7 jewels/Parity-Pole; N>=3: FERRY Thm B ]
+PASS  jewel cell (2,1), sigma=1: E1 (expected E1)  [N=2: T7 jewels/Parity-Pole; N>=3: FERRY Thm B ]
+PASS  shear-orbit cell (2,1) w/ tails: E1 (expected E1)  [N=2: T7 jewels/Parity-Pole; N>=3: FERRY Thm B ]
+PASS  (3,2,6) coset cell, sigma=4 (d=2 binomial): E1 (expected E1)  [N=2: T7 jewels/Parity-Pole; N>=3: FERRY Thm B ]
+PASS  (4,1,2) cell, sigma=1: E1 (expected E1)  [N=2: T7 jewels/Parity-Pole; N>=3: FERRY Thm B ]
+PASS  composite-jewel (3,6) t=sqrt3, sigma=1: E4 (expected E4) fertile_ks=[1, 4, 7]  [Composite Residue Law + sliver routes (fertile]
+PASS  composite cone generic t=1 (barren): E3 (expected E3) fertile_ks=[]  [Composite-Cone Fertility Lemma (off fertile lo]
+PASS  composite cone repeated root (1+xi)^2: E2 (expected E2)  [No-Conspiracy telescoping (repeated cone root)]
+PASS  fat edge / staircase strict collapse: B (expected B)  [FATEDGE-KILL rev-5 (strict collapse, all m in ]
+PASS  dominant single edge (open-edge support): A (expected A)  [T5 Discriminant-Ring (dominant edge)]
+PASS  bare-ramified first edge (Theorem-prime): C (expected C)  [Theorem-prime Ramified-Edge Kill (bare-ramifie]
+PASS  multi-supported ramified e1 (divisor law): D (expected D)  [T6 divisor-law at simple e1-roots + first-edge]
+PASS  3-edge simple deeper roots: E0 (expected E0)  [T6 third-edge undershoot + recursed 2-edge E-m]
+PASS  3-edge composite-simple deeper edge: E0 (expected E0)  [T6 third-edge undershoot + recursed 2-edge E-m]
+PASS  conspiracy: repeated deeper root (1+xi)^2: F (expected F)  [No-Conspiracy at 2-edge level + CHI-DIV/D3-TRA]
+
+== fuzz sweep ==
+   gen_staircase: 500 shapes done
+   gen_ramified: 400 shapes done
+   gen_cell: 350 shapes done
+   gen_cell(comp): 150 shapes done
+   gen_fertile_jewel: 100 shapes done
+   gen_multiedge: 300 shapes done
+   gen_random_cloud: 300 shapes done
+
+per-stratum counts over 2100 random shapes:
+   A     149   T5 Discriminant-Ring (dominant edge)
+   B     561   FATEDGE-KILL rev-5 (strict collapse, all m in Z)
+   C     394   Theorem-prime Ramified-Edge Kill (bare-ramified e1)
+   D      79   T6 divisor-law at simple e1-roots + first-edge chart recur
+   E0    275   T6 third-edge undershoot + recursed 2-edge E-machinery
+   E1    365   N=2: T7 jewels/Parity-Pole; N>=3: FERRY Thm B rev-2.1 (+ z
+   E2     36   No-Conspiracy telescoping (repeated cone root)
+   E3    115   Composite-Cone Fertility Lemma (off fertile locus: germ-ba
+   E4    100   Composite Residue Law + sliver routes (fertile locus; D>=4
+   F      26   No-Conspiracy at 2-edge level + CHI-DIV/D3-TRACE + edge re
+
+ALL GREEN: every shape landed in exactly one stratum

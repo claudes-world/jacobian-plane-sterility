@@ -1,0 +1,320 @@
+{
+ "statuses": [
+  "proved",
+  "symbolically_verified",
+  "window_certified",
+  "open"
+ ],
+ "notes": "status = strongest claim; verification = how it was checked. window_certified means the verdict is exact within stated solver windows and must be treated as falsifiable by window enlargement. Dependencies mirror the graph in handoff Section 3. 2026-07-23: FATEDGE-KILL added; STAIR-STERILITY proved pending external audit; O3 vacuous. Line Theorem configuration space closed \u2014 assembly writeup + audits remain.",
+ "entries": [
+  {
+   "id": "WALL",
+   "title": "Contour/divided-difference wall: W_r Laurent in x with coefficients in C[t]",
+   "status": "proved",
+   "verification": "hand proof, chart-free, no genericity",
+   "depends_on": []
+  },
+  {
+   "id": "T1",
+   "title": "Translated-pole sterility (vertical scaffolds)",
+   "status": "proved",
+   "verification": "hand proofs + symbolic witnesses in original sessions",
+   "depends_on": []
+  },
+  {
+   "id": "T2",
+   "title": "Hyperbola Sterility Theorem, incl. Master Unit Identity",
+   "status": "proved",
+   "verification": "hand proof + symbolic witnesses; external audit reported gap-free",
+   "depends_on": []
+  },
+  {
+   "id": "T3",
+   "title": "Line Dichotomy + early line closures (D=1, x-only, u in C[x], y-affine, C- and C*-fibers)",
+   "status": "proved",
+   "verification": "hand proofs + symbolic witnesses",
+   "depends_on": [
+    "T2"
+   ]
+  },
+  {
+   "id": "T4",
+   "title": "Exponent/slope/divisor laws: m>=1, quantization, resonance, divisor law",
+   "status": "proved",
+   "verification": "hand proofs + branch-level symbolic checks",
+   "depends_on": [
+    "T3"
+   ]
+  },
+  {
+   "id": "T5",
+   "title": "Discriminant-Ring Theorem (dominant edges, all N, all slopes)",
+   "status": "proved",
+   "verification": "hand proof + symbolic discriminant/inverse checks + emptiness sweeps",
+   "depends_on": [
+    "T4",
+    "WALL"
+   ]
+  },
+  {
+   "id": "T6",
+   "title": "Staircase reduction + No-Conspiracy balance",
+   "status": "proved",
+   "verification": "hand proof (telescoping balance identity)",
+   "depends_on": [
+    "T4"
+   ]
+  },
+  {
+   "id": "T7",
+   "title": "Split-edge N=2: psi-calculus, odd ladder, jewels, Parity-Pole, full closure",
+   "status": "proved",
+   "verification": "hand proofs + three explicit rungs machine-verified incl. blind nu*=2 construction",
+   "depends_on": [
+    "T4",
+    "WALL"
+   ]
+  },
+  {
+   "id": "T8",
+   "title": "N-th power rigidity (B_N a perfect power; N | r_N at generic corner)",
+   "status": "proved",
+   "verification": "hand proof from the ambient identity",
+   "depends_on": [
+    "WALL"
+   ]
+  },
+  {
+   "id": "T9",
+   "title": "Cone method + fertility table (N=3 fertile at (1,3),(2,3))",
+   "status": "proved",
+   "verification": "UPGRADED from window_certified: closed-form criterion r | Nk and r NOT| k (germ recursion termination + diagonal-zero analysis); matches cone_solver on 19-cell grid; reproduces N=2 jewel law k<=12, r<=8. fertility_residue_sweep.py 17/17",
+   "depends_on": [
+    "T8"
+   ]
+  },
+  {
+   "id": "T10",
+   "title": "(3,1,3) germ + bare-tail theorem (companion-curve execution)",
+   "status": "proved",
+   "verification": "hand cascade with exact w1 + complete-window machine certification",
+   "depends_on": [
+    "T9"
+   ]
+  },
+  {
+   "id": "T11",
+   "title": "Obstruction ladder through bucket 11: shields, canonical cores, gamma-spine",
+   "status": "window_certified",
+   "verification": "bucket_marcher.py with sign and silent-drop regressions; canonical values in expected_bucket_11.json",
+   "depends_on": [
+    "T10"
+   ]
+  },
+  {
+   "id": "O1",
+   "title": "Tail Exhaustion Lemma at (3,1,3): E-minimal (c_j nonzero, canonical definition) and E-general (terminal system unsatisfiable for every polynomial tail)",
+   "status": "superseded",
+   "verification": "FALSIFIED as stated: clean minimal march (E1 off) to bucket 46 shows c_j = 0 for j >= 4; minimal ladder = gauge orbit of the germ under (x,Y)->(x,Y+gam*x) (exact closed form). Replaced by SHEAR + RES-313 + RES-UNIF. See RESULTS-2026-07-22-residue-theorem.md",
+   "depends_on": [
+    "T11"
+   ]
+  },
+  {
+   "id": "O2",
+   "title": "Generalization: cell (2,3), the r in 3Z family, N>=4 cone fertility and closures",
+   "status": "open",
+   "verification": "same marcher machinery; N=4 plane sweeps empty so far",
+   "depends_on": [
+    "T9",
+    "O1"
+   ]
+  },
+  {
+   "id": "O3",
+   "title": "Conspiracy exact-hit recursions in >=3-edge staircases",
+   "status": "superseded",
+   "verification": "VACUOUS by FATEDGE-KILL (2026-07-23): all staircases are pair-barren, so the conspiracy configurations cannot carry a pair at all; nothing to recurse on. Quantified-deficit formula stands as corroboration.",
+   "depends_on": [
+    "T6"
+   ]
+  },
+  {
+   "id": "SHEAR",
+   "title": "Shear Orbit Theorem at (3,1,3): minimal ladder converges to c_min(x,Y+gam*x), w_germ(x,Y+gam*x); exact pair, all orders, nonconstant u",
+   "status": "proved",
+   "verification": "closed form + sympy exact (chart and plane); clean minimal march quiet buckets 16..46 (marcher2.py --minimal --no-e1)",
+   "depends_on": [
+    "T10",
+    "T11"
+   ]
+  },
+  {
+   "id": "RES-313",
+   "title": "Residue Clash Theorem at (3,1,3): fiber punctures carry w-residues -lam (main) and +lam/2 (companions); master identity forces mu=0; no scaffold over any polynomial tail",
+   "status": "proved",
+   "verification": "verify_residue.py 22/22: Puiseux branches, residues, hull rigidity over all knobs, w-support knob/E1-freeness, windowed P_W emptiness; general-tail composition hand-derived, prose pending; (2,3) explicit instance verify_residue_23.py 15/15 (residues -lam/2, +lam/4; windowed P_W empty; hulls to N=6)",
+   "depends_on": [
+    "T9",
+    "T10",
+    "SHEAR"
+   ]
+  },
+  {
+   "id": "RES-UNIF",
+   "title": "Uniform Residue Lemma: germ ODE self-evaluates at zeta=0,-1; ratio -1/2 for every k; (-1/2)^(D-1) != 1 kills all D>=2; (2,3) germ closed-form instance",
+   "status": "proved",
+   "verification": "General bracket identity + self-evaluation at zeta=0,-1: ratio -1/(N-1) for every (k,r); 15 fertile germs machine-verified exact; N=2 ratio -1 consistent with T7 jewel stratum (odd D); hull rigidity general form: a+b>=2 and v>-r, swept over cells x sigma. T11 knob-lattice gap (v<0 slots e.g. (1,1)) found and recorded; does not affect closure REV-2 REPAIRS (2026-07-23 audit round, GPT + chat-Claude independent): (1) section-5 bucket constants were the r=N specialization \u2014 corrected to general shift r-(N-1); conclusions survive (only bucket differences + shift-invariant germ threshold -(N-1)k enter). (2) GENUINE GAP repaired: zeta-coset decomposition at d=gcd(N-1,r)>1 \u2014 operator preserves cosets (Y keeps b, x^r Y^N shifts b by N-1), source+germ on b=0 coset, other cosets homogeneous and die; witness verify_326_coset.py 8/8 at fertile (3,2,6) (d=2 unramified companions, ratio -1/2, odd-coset solve empty). (3) Lemma-2 coordinate conventions clarified (c- vs u-polygon); final inequalities unchanged (machine-swept). REV-2.1 (GPT-Pro audit ~02:59): m<0 terminal case added to Theorem B (now all m in Z, T4-independence real); sharper germ-grade kernel exclusion (r|(N-1)k + r|Nk => r|k, contra r!|k); Trace-Lemma tau-polynomial parenthetical deleted (x-freeness suffices); NEW exact witnesses: (4,1,2) pair ratio -1/3 + independent (3,2,6) germ matching ours exactly + 60 empty span searches + 860 barren staircase systems incl m<0.",
+   "depends_on": [
+    "RES-313"
+   ]
+  },
+  {
+   "id": "GAP-T11",
+   "title": "T11 knob lattice omitted admissible negative-weight slots (-r < v < 0, e.g. (1,1) at (3,1,3)): ladder not fully general; superseded by residue closure",
+   "status": "symbolically_verified",
+   "verification": "(1,1) shown above both edges and non-gauge; residue theorem covers all v > -r tails; full-lattice march run (--min-knob-wt -2): new bucket -2 obstruction, k22/k43 enter cores, gamma-spine intact, no terminals",
+   "depends_on": [
+    "T11"
+   ]
+  },
+  {
+   "id": "TRACE",
+   "title": "Trace Lemma: Tr_c(w) is x-free for every line pair with deg_y c >= 2, m >= 1; tracing the master identity kills all D = 2 scaffolds over any line pair; explains ratio via 1*phi(0) + (N-1)*phi(-1) = 0",
+   "status": "proved",
+   "verification": "three-line proof (residue theorem on y-line); Tr(w) = 0 exact on both sheared pairs, numeric + symbolic; Tr(w^2) correctly not x-free (boundary = A3's W^2 stratum)",
+   "depends_on": []
+  },
+  {
+   "id": "E2-NOTE",
+   "title": "E2*c_min^2 is NOT an absorbable kernel injection (real bucket -1 obstruction), unlike E1*c_min; honest kernel = g(c), trivially inert. Handoff item 5 resolved with amended expectation",
+   "status": "symbolically_verified",
+   "verification": "marcher2 --e2 run: E2-leak at bucket -1, shield (3,2); g(c)-inertness is one line",
+   "depends_on": [
+    "T11"
+   ]
+  },
+  {
+   "id": "D3-TRACE",
+   "title": "Forced-Profile Theorem: no D = 3 line scaffold over ANY configuration (split or staircase, conspiracies included) \u2014 trace hierarchy + Euler S1 = w_{N-1}/a_N + top-corner rigidity force a_N = beta*x^{N(2m+1)}, exceeding the convexity cap by Nm/2 - 1 >= 1",
+   "status": "symbolically_verified",
+   "verification": "trace_hierarchy.py 9/9 (I1, I2, base profiles); generic-coefficient Euler at N=3,4; rigidity exact on base point; margin table all-positive. Open lemma: top-reduction (H-red) deg_y w <= N-1 after g(c)-subtraction. T6 conspiracy residual now confined to D >= 4",
+   "depends_on": [
+    "TRACE",
+    "T4"
+   ]
+  },
+  {
+   "id": "CHI-DIV",
+   "title": "Sheet-value divisibility: chi(W) | P_W(W,t) - mu x^-m; instant kill of all D <= N' (N' = distinct sheet values >= 2 always; = N for prime N + irreducible fiber). D <= 3 dead unconditionally at every N = 3 configuration; A3's 'field sees only x^-2' = chi = W^2 - 4t - x^-2 exactly",
+   "status": "symbolically_verified",
+   "verification": "chi computed via moment/Newton machinery: sheared pair (E1 = 0, disc != 0, N' = 3) and A3 (chi = W^2 - 4t - 1/x^2 exact). Remaining: D-1 >= N' division system; N'-control for composite N (field-degree lemma)",
+   "depends_on": [
+    "TRACE",
+    "D3-TRACE"
+   ]
+  },
+  {
+   "id": "DIV-SYS",
+   "title": "Division system opened: (3,1,3) machine-closed through D = 6; residue multiset predicts chi polar symbols exactly (e1 = 0 = trace, e_s != 0 for s >= 2); all-D kill on the quasi-homogeneous orbit by grade arithmetic (mu-slot unreachable); staircase/conspiracy endgame reduced to one-row slot-membership per family",
+   "status": "symbolically_verified",
+   "verification": "windowed solves D = 4,5,6 only-zero; e2 = b(b+2a) = -75/4, e3 = ab^2 = -125/4 match computed E2, E3; grade lattice argument recorded in T6-TRACE-ATTACK.md section 6 (rigorous on the exact orbit; general-tail bigraded triangulation pending)",
+   "depends_on": [
+    "CHI-DIV",
+    "RES-UNIF"
+   ]
+  },
+  {
+   "id": "STAIR-PAIR",
+   "title": "Staircase pair hunts: 2-edge simple, 3-edge simple, and the minimal N=5 conspiracy (double+double roots, symbolic parameters) all PAIR-BARREN in windows; hunter control-validated on the shear cell. Leading-trace satisfied (-lam/2, +lam/2), so barrenness is deeper (tower obstructions)",
+   "status": "window_certified",
+   "verification": "windowed plane solves (x*J(A,c) - d*A*c_y = lam x^{m+d+1}); bare hulls, integer exponents, (d,m) in {1,2}^2 grids; caveats recorded (tails untested, rational slopes untested); GENERIC-TAILED hunts also barren (8 knobs 2-edge, 15 knobs conspiracy, symbolic); special loci need staircase marcher / per-edge criteria; CORRECTED: first conspiracy shape was N1>=2 first-edge-double (bonus point); GENUINE conspiracy (N1=1, slopes 4>3>2, double+double) also barren: symbolic (u,v) win(18,7), numeric win(20,8)",
+   "depends_on": [
+    "T4",
+    "DIV-SYS"
+   ]
+  },
+  {
+   "id": "STAIR-STERILITY",
+   "title": "Staircase Sterility Theorem (fat-edge kill): every genuine c-staircase (fiber hull = single fat edge, N >= 2), any multiplicities/conspiracies, any above-hull tail, any (d, m), admits NO line pair. Pair-level, D-irrelevant, m>=1 not even needed.",
+   "status": "proved",
+   "verification": "One-page hand proof (omega-grading: leading bracket J(., x^alpha y^N) shifts y-degree by N-1 >= 1 so cannot source lam*x^m; kernel of L0 lives at omega = 0 only; bottom-up kill forces omega >= 0 on supp(w); poles force omega < 0). verify_fatedge_kill.py 15/15: exact graded-structure checks; symbolic-knob hunts lam==0 (2-edge, all (d,m) tried); conspiracy mod-p rank certificates 96/96 at win(18,7) + exact QQ at special loci incl. v=u^2; controls (split cell pair FOUND, hypothesis correctly fails on split + jewel); chart-march negative-level nullspace ZERO. EXTERNAL AUDIT PENDING (5 asks in STAIRCASE-STERILITY-2026-07-23.md). CODEX AUDIT DONE 2026-07-23 02:10 ET: ENDORSE-WITH-AMENDMENTS, no fatal, no counterexample; its own 36-system exact search (rational slopes gcd 1/2, tailed, reducible, N=2 no-y0, alpha=0) all forced lam=0; all amendments applied to the doc rev 2 (top coefficient b, one-way staircase implication, admissible-tail wording, mod-p-as-samples, scope narrowing, 5 asks). Desktop+ChatGPT ferry audit still PENDING (4 reviewers). FERRY ROUND 1 (2026-07-23 ~02:40): chat-Claude refutation FAILED (~210 exact hunts, hunter blind-rediscovered shear+jewel pairs; STRENGTHENED theorem: one-line K4 + J(w,c) not in C[x] at all / empty pole-bearing centralizer \u2014 adopted rev-4 sec 1.6); GPT could not refute (356 exact systems; its 3 FERRY findings repaired in FERRY rev-2); Gemini fatal-inversion claim REFUTED (reviews/gemini/REBUTTAL.md \u2014 Newton orientation reversed; sizing x^(omega/N) settles it; both other reviewers machine-verified the exchange step). Doc rev-4. GPT-Pro pending. GPT-PRO (5th reviewer): did NOT refute \u2014 \"sound and stronger than advertised\"; 860 exact systems zero survivors; all-m-in-Z + C[x,1/x] strengthening folded (rev-5 sec 1.6) with poleless family w=x^a*y; roll-up correctly flagged conditional on external partition (assembly doc). ROUND 1 FULLY COMPLETE: 5 reviewers, 0 dents in the theorem, every FERRY defect repaired same-hour with executable witnesses.",
+   "depends_on": [
+    "T6",
+    "T8"
+   ]
+  },
+  {
+   "id": "FATEDGE-KILL",
+   "title": "Fat-Edge Kill Lemma: c with fiber collapse (N*i - alpha*j > 0 off top vertex, N >= 2) admits no line pair w = A/x^d, d >= 1, J(w,c) = lam*x^m, lam != 0 \u2014 any tail, any m >= 0. Mechanism: perfect-power fat edge is ramified, its bracket misses y^0; guardian = Galois collapse in a fourth costume. Boundary = exactly the split/staircase stratum line. REV-3 GENERALIZATION (Theorem'): the kill needs only the FIRST fiber-hull edge bare-ramified (sole supported monomial = its endpoint, N1 >= 2) \u2014 regrade by omega1 = N1*i - i1*j, same proof verbatim. Kills all YELLOW-1 bare shapes (convex tall-first-edge included). Completeness residue: multi-supported first edges + height-1 first edges (cells, closed).",
+   "status": "proved",
+   "verification": "verify_fatedge_kill.py 18/18 (section E: convex N1=2 two-edge shape, outside the collapse hypothesis, bare+tailed, lam==0 on (d,m) grid). Theorem-prime NOT yet in codex/ferry audit scope \u2014 flag for next round. Doc rev-3 section 1.7.",
+   "depends_on": []
+  },
+  {
+   "id": "COMP-FERTILITY",
+   "title": "Composite-Cone Fertility Lemma: interior cone support adds termination condition P_k(t)=0; off its locus germ-barren (closes E3)",
+   "status": "proved",
+   "verification": "probe_composite_cone.py Q1/Q2; P_k table k<=8 at (3,6): P1~t^2-3, P2~t(2t^2-9), k=4 contains (t^2-3); classify_stratum germ solver independent",
+   "depends_on": [
+    "T9"
+   ]
+  },
+  {
+   "id": "COMP-RESIDUE-LAW",
+   "title": "Composite Residue Law: per-root ratio phi(rho)/phi(0) = d/((N-1) rho E'(rho)); binomial -1/(N-1) is the special case; (3,6) fertile family ratios = primitive cube roots of unity => 3|J confinement",
+   "status": "proved",
+   "verification": "derivation via first-order cone ODE (r/d) xi E phi' - k[E + ((N-1)/d) xi E'] phi = lam; checked against binomial law; germ closed form at (3,6,1)",
+   "depends_on": [
+    "RES-UNIF",
+    "COMP-FERTILITY"
+   ]
+  },
+  {
+   "id": "COMPJEWEL-MINKILL",
+   "title": "Composite-Jewel Minimal-Chart Kill: E4 minimal charts (tails = gamma x) pair-dead at k=1,4,7 (+ t=-sqrt3 twin) - terminal cokernel obstruction at germ's first gamma-rung, core ~ t*gamma*lam",
+   "status": "proved",
+   "verification": "marcher_composite.py minimal --no-e1: k=1 terminal bucket 2 core -sqrt3*gam*lam; k=4 terminal bucket -1 core 2sqrt3*gam*lam; E1-seed robust (no gauge leak); pre-bucket kernel supports = c_min multiples only; germs reproduced in closed form (out/mc_k1_minimal.json, mc_k4_minimal.json, mc_k1_min_e1.json); k=7 terminal bucket -4 core 5sqrt3*gam*lam (mc_k7_minimal.json); twin t=-sqrt3 terminal bucket 2 core +sqrt3*gam*lam; observed core law (k-2)*t*gam*lam (conjecture for family)",
+   "depends_on": [
+    "COMP-FERTILITY"
+   ]
+  },
+  {
+   "id": "COMPJEWEL-SHEAR",
+   "title": "Composite shear orbit: (w_germ o S, c_min o S) under S: Y -> Y + gamma x is a genuine pair family on E4; full-knob march cascade = shear shadow + b in {2,3} freedom",
+   "status": "proved",
+   "verification": "verify_composite_jewel.py A1-A4 (chart + sigma=1 plane, gamma symbolic); deep march out/mc_k1_full_deep.json: 2 conds/bucket absorbed at b in {0,1} lag-2 slots, coeffs -(beta-1)sqrt3*lam / -beta*sqrt3*lam, no terminal through bucket 11; imposed gamma-rung slots (4,1),(7,2)/(5,0),(8,1)/(9,0) = shear tail slots exactly",
+   "depends_on": [
+    "COMPJEWEL-MINKILL"
+   ]
+  },
+  {
+   "id": "COMPJEWEL-PLAYER",
+   "title": "Shear-Locus Kill: no scaffold on the composite-jewel shear orbit for ANY (sigma, D) \u2014 weight decoupling + functional independence + leading pole at Y=0",
+   "status": "proved",
+   "verification": "codex xhigh delta-audit contributed the target-weight + leading-pole core; independence step (J(w,c)!=0 => per-line polynomial vanishing) completes it; corrected SHEARED-rows sweeps corroborate (codex checker line-restricted sigma<=8 D<=6; our full-grid verify_composite_sheared.py; historical bare-rows sweeps sigma<=12 D<=8). rev-1.1's bare-f polynomiality transfer REFUTED by P=W+W^2C at sigma=2 (reverified)",
+   "depends_on": [
+    "COMPJEWEL-SHEAR",
+    "COMP-RESIDUE-LAW",
+    "CHI-DIV"
+   ]
+  },
+  {
+   "id": "PARTITION-EXEC",
+   "title": "Partition executable + fuzz-verified: 10-stratum case tree as independent predicates, exactly-one-fires on 2100 random shapes + 15-shape zoo; r >= 1 convexity fact checked shape-by-shape",
+   "status": "proved",
+   "verification": "classify_stratum.py full sweep ALL GREEN (out/classify_sweep_full.log); all strata populated (A 149 B 561 C 394 D 79 E0 275 E1 365 E2 36 E3 115 E4 100 F 26); assembly obligation 8 CLOSED",
+   "depends_on": []
+  },
+  {
+   "id": "COMPJEWEL-AUDIT-R2",
+   "title": "Delta-audit round 2 (codex xhigh) on composite-jewel + fuzzer: A endorse-with-amendments (independent re-derivation of minimal-chart kill), B/C refute->repair->STRENGTHEN (Shear-Locus Kill all sigma,D), D refute->repair (bounded fertility candidates k=j*q/gcd(q,N)), E non-shear window candidate (weight-6 first residual)",
+   "status": "folded",
+   "verification": "codex-audit-composite-2026-07-23.md + codexchk_composite_audit.py (ALL EXACT CHECKS PASSED); all 5 amendments applied: sheared-rows correction, all-(sigma,D) proof, deep-pole rewording, fuzzer KMAX adaptive fix (counterexample r=54 cell now E4 fertile k=9), stale JSONs regenerated",
+   "depends_on": [
+    "COMPJEWEL-PLAYER",
+    "PARTITION-EXEC"
+   ]
+  }
+ ]
+}
