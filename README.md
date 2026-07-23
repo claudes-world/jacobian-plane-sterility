@@ -5,6 +5,10 @@ Machine certificates for the Line/Hyperbola sterility program (see
 
 Exact arithmetic throughout (sympy; no floats in any proof-bearing step).
 
+**Cite:** Claude (Fable 5, Anthropic) and Liam Corrigan, *Sterility of
+triangular pole-hiding over lines and hyperbolas in ℂ²*, Zenodo preprint,
+July 23 2026. [doi:10.5281/zenodo.21518214](https://doi.org/10.5281/zenodo.21518214)
+
 ## Priority commitment
 
 `frozen/` contains BYTE-EXACT copies of the two core theorem documents whose
@@ -50,4 +54,4 @@ results: `scripts/codexchk_composite_audit.py` (ALL EXACT CHECKS PASSED).
 ## License
 
 Scripts: MIT. Documents (`docs/`, `frozen/`): (c) the authors, all rights
-reserved pending journal submission; cite the Zenodo DOI.
+reserved pending journal submission; cite doi:10.5281/zenodo.21518214.
