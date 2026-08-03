@@ -1,0 +1,516 @@
+{
+ "schema": "line-theorem typed graph v3 (2026-07-25, jc-4, round-10 blocker 5 repair)",
+ "doctrine": "MATH edges = statement consumption (acyclic, audited); STRENGTHENS = optional independent reinforcement; PROVENANCE lives in theorem_ledger_v2.json (chronology, NOT this graph). Status vocabulary is CLOSED: proved | machine-faced | handoff-R | suspended | structure. Node levels: pair < quasi < scaffold (a node may consume inputs at or below its own level; consuming ABOVE = quantifier bug = what Finding 13 was). FRAME_DEPS = coordinate/normalization citations only (no realization class consumed); exempt from the level lint; still counted in acyclicity. v2: node IDs ARE TeX labels; 'object' level = realization-free statements (fiber-side only); the checker lints statement-body citations against edges; expository citations must be declared in 'expository'. v3 (round-11 J2): CONTEXT edges = provenance/route/application notes, NOT statement consumption — declared so the citation lint covers them, EXEMPT from acyclicity and level lints; the four edge kinds are pairwise disjoint per node (G8); synthetic-ID exceptions are exactly thm:B (assembly sink) and thm:T2obj (T2 statement object); independent superseded routes attach as STRENGTHENS, not math. Statement-alias display nodes (thm:C) consume their prover via math and are imported by it via context; aliases are excluded from sink-reachability (G5b) — they carry no independent proof obligation.",
+ "levels_order": [
+  "object",
+  "pair",
+  "quasi",
+  "scaffold"
+ ],
+ "nodes": [
+  {
+   "id": "prop:pair",
+   "title": "Pair equation and master identity",
+   "level": "scaffold",
+   "frame": "plane",
+   "status": "proved",
+   "math": [],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:dichotomy",
+   "title": "Line Dichotomy",
+   "level": "scaffold",
+   "frame": "plane",
+   "status": "proved",
+   "math": [
+    "prop:pair"
+   ],
+   "frame_deps": []
+  },
+  {
+   "id": "prop:reductions",
+   "title": "First reductions",
+   "level": "scaffold",
+   "frame": "plane",
+   "status": "handoff-R",
+   "math": [],
+   "frame_deps": []
+  },
+  {
+   "id": "lem:transport",
+   "title": "Covering transport (quasi-scaffolds)",
+   "level": "quasi",
+   "frame": "covered",
+   "status": "machine-faced",
+   "math": [],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:laws",
+   "title": "T4 laws, UNCOVERED valuation form (rev-3.5)",
+   "level": "scaffold",
+   "frame": "plane",
+   "status": "machine-faced",
+   "math": [
+    "prop:pair",
+    "prop:reductions"
+   ],
+   "frame_deps": [],
+   "expository": [
+    "cor:lawscov",
+    "thm:clusterdrt",
+    "thm:undershoot"
+   ]
+  },
+  {
+   "id": "prop:complete",
+   "title": "Completeness of the plane partition",
+   "level": "pair",
+   "frame": "plane",
+   "status": "machine-faced",
+   "math": [],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:fatedge",
+   "title": "Fat-Edge Kill / Staircase Sterility",
+   "level": "pair",
+   "frame": "plane",
+   "status": "machine-faced",
+   "math": [],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:ramified",
+   "title": "Ramified-Edge Kill",
+   "level": "pair",
+   "frame": "plane",
+   "status": "machine-faced",
+   "math": [
+    "thm:fatedge"
+   ],
+   "frame_deps": []
+  },
+  {
+   "id": "lem:wall",
+   "title": "Coefficient wall, local form (ring C[t]((x)))",
+   "level": "pair",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [],
+   "frame_deps": [
+    "lem:transport"
+   ]
+  },
+  {
+   "id": "thm:T5",
+   "title": "Discriminant-Ring Theorem (stratum A)",
+   "level": "scaffold",
+   "frame": "plane",
+   "status": "handoff-R",
+   "math": [
+    "lem:wall",
+    "thm:laws",
+    "lem:transport"
+   ],
+   "frame_deps": []
+  },
+  {
+   "id": "lem:U",
+   "title": "General-s undershoot identity",
+   "level": "pair",
+   "frame": "plane",
+   "status": "machine-faced",
+   "math": [],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:undershoot",
+   "title": "Undershoot kill, every depth",
+   "level": "scaffold",
+   "frame": "plane",
+   "status": "machine-faced",
+   "math": [
+    "lem:U",
+    "thm:laws"
+   ],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:T",
+   "title": "T1-T3 local reduction / transport / budgets",
+   "level": "quasi",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "lem:transport",
+    "thm:T2obj"
+   ],
+   "frame_deps": [],
+   "expository": [
+    "thm:leafkill"
+   ]
+  },
+  {
+   "id": "lem:cluster",
+   "title": "Hensel cluster factorization (rev-3.5, NEW)",
+   "level": "object",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "thm:T2obj"
+   ],
+   "frame_deps": [
+    "lem:transport"
+   ],
+   "expository": [
+    "rem:laws-scope",
+    "thm:leafkill"
+   ]
+  },
+  {
+   "id": "thm:clusterdrt",
+   "title": "Cluster Discriminant-Ring kill (rev-3.5, NEW)",
+   "level": "scaffold",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "lem:cluster",
+    "lem:peel",
+    "lem:wall",
+    "thm:T",
+    "thm:laws",
+    "lem:transport"
+   ],
+   "frame_deps": [],
+   "expository": [
+    "thm:T5"
+   ]
+  },
+  {
+   "id": "lem:deeppole",
+   "title": "Deep-Pole Fat-Edge Kill (strict-collapse subclass)",
+   "level": "pair",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "thm:fatedge",
+    "thm:ramified"
+   ],
+   "frame_deps": [],
+   "expository": []
+  },
+  {
+   "id": "lem:reach",
+   "title": "Reachability invariant (structure layer only)",
+   "level": "quasi",
+   "frame": "chart",
+   "status": "structure",
+   "math": [
+    "thm:T",
+    "lem:transport"
+   ],
+   "frame_deps": []
+  },
+  {
+   "id": "cor:anchor",
+   "title": "Terminal anchoring c~(0,Z) = aZ (exact-hit)",
+   "level": "scaffold",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "lem:puiseux",
+    "thm:T",
+    "lem:I1"
+   ],
+   "frame_deps": [],
+   "expository": [
+    "thm:UCK",
+    "thm:axiskill"
+   ]
+  },
+  {
+   "id": "thm:leafkill",
+   "title": "Node classification + kills (replaces thm:allfat, rev-3.5)",
+   "level": "scaffold",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "thm:clusterdrt",
+    "lem:peel",
+    "lem:cluster",
+    "lem:puiseux",
+    "lem:I1",
+    "cor:anchor",
+    "thm:T"
+   ],
+   "frame_deps": [],
+   "expository": [
+    "lem:deeppole"
+   ]
+  },
+  {
+   "id": "lem:K",
+   "title": "Kernel and fiber irreducibility",
+   "level": "pair",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:UCK",
+   "title": "UCK Steps 1-4 at split cells",
+   "level": "scaffold",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "lem:K"
+   ],
+   "frame_deps": [],
+   "context": [
+    "cor:anchor",
+    "cor:lawscov",
+    "lem:I1",
+    "thm:fertile",
+    "thm:C"
+   ]
+  },
+  {
+   "id": "thm:ferry",
+   "title": "Uniform Residue Theorem",
+   "level": "scaffold",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "lem:K"
+   ],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:trace",
+   "title": "Trace Lemma (Galois symmetrization)",
+   "level": "scaffold",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [],
+   "frame_deps": [],
+   "context": [
+    "thm:ferry",
+    "thm:laws"
+   ]
+  },
+  {
+   "id": "prop:deck",
+   "title": "C3 deck / cube-root rigidity block",
+   "level": "scaffold",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "thm:rigidity"
+   ],
+   "frame_deps": [],
+   "context": [
+    "thm:ferry"
+   ],
+   "note": " [level pair->scaffold rev-3.9: consumes thm:rigidity (reversed edge, round-11 J2.2)]"
+  },
+  {
+   "id": "thm:axiskill",
+   "title": "Axis Kill (rows D/F closed)",
+   "level": "scaffold",
+   "frame": "plane",
+   "status": "machine-faced",
+   "math": [
+    "thm:UCK",
+    "lem:K",
+    "cor:anchor",
+    "thm:laws",
+    "thm:leafkill"
+   ],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:B",
+   "title": "COMPLETENESS SINK: Line Theorem (Theorem B)",
+   "level": "scaffold",
+   "frame": "plane",
+   "status": "suspended",
+   "math": [
+    "prop:complete",
+    "prop:reductions",
+    "thm:T5",
+    "thm:UCK",
+    "thm:axiskill",
+    "thm:dichotomy",
+    "thm:fatedge",
+    "thm:leafkill",
+    "thm:ramified",
+    "thm:undershoot"
+   ],
+   "blockers": [
+    "round-12 focused delta: repaired termination producer (thm:T/thm:leafkill(1)) + every consumer re-audited (round-11 blocker 1)",
+    "round-12 verifies round-11 blockers 2-5 repaired (graph retype / ledger / scope list / machine gate)",
+    "external gates (Liam: cross-family gate timing, buttons)"
+   ],
+   "frame_deps": [],
+   "context": [
+    "prop:deck",
+    "thm:ferry",
+    "thm:fertile",
+    "thm:fertility",
+    "thm:rigidity",
+    "thm:trace"
+   ]
+  },
+  {
+   "id": "cor:lawscov",
+   "title": "Covered integrality corollary (k_q = qm/e; exponents qm+q-1 / gap qm)",
+   "level": "scaffold",
+   "frame": "covered",
+   "status": "machine-faced",
+   "math": [
+    "thm:laws",
+    "lem:transport"
+   ],
+   "frame_deps": [],
+   "expository": [
+    "thm:T5"
+   ]
+  },
+  {
+   "id": "lem:puiseux",
+   "title": "Puiseux ladder PRODUCT FORMULA (rev-3.5)",
+   "level": "scaffold",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "thm:laws"
+   ],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:T2obj",
+   "title": "T2 governance, object-level content (fiber-side chart structure)",
+   "level": "object",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [],
+   "frame_deps": []
+  },
+  {
+   "id": "lem:peel",
+   "title": "Peel: anchored-block extraction (iterated coprime Hensel)",
+   "level": "object",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "lem:cluster"
+   ],
+   "frame_deps": []
+  },
+  {
+   "id": "lem:I1",
+   "title": "I1: exact-hit dichotomy + depth conservation (in-paper, scaffold level)",
+   "level": "scaffold",
+   "frame": "chart",
+   "status": "handoff-R",
+   "math": [
+    "thm:laws",
+    "cor:lawscov",
+    "thm:T"
+   ],
+   "frame_deps": [],
+   "expository": []
+  },
+  {
+   "id": "thm:fertility",
+   "title": "Fertility and the shear orbit (binomial cells)",
+   "level": "pair",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:fertile",
+   "title": "Fertile composite germ (cone ODE)",
+   "level": "pair",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [],
+   "frame_deps": [],
+   "context": [
+    "thm:fertility",
+    "thm:ferry"
+   ]
+  },
+  {
+   "id": "thm:rigidity",
+   "title": "Cube-root rigidity",
+   "level": "scaffold",
+   "frame": "chart",
+   "status": "machine-faced",
+   "math": [
+    "thm:ferry"
+   ],
+   "frame_deps": []
+  },
+  {
+   "id": "thm:C",
+   "level": "scaffold",
+   "status": "proved",
+   "math": [
+    "thm:UCK"
+   ],
+   "frame_deps": [],
+   "expository": [],
+   "note": "statement alias of thm:UCK displayed in sec:intro; imported by thm:UCK as hypothesis definitions (context edge); re-encoded rev-3.10 per round-12 R2: alias consumes prover, never the reverse",
+   "title": "Theorem C (introduction display) — Unconditional Cell Kill, statement alias",
+   "frame": "chart"
+  }
+ ],
+ "strengthens": [
+  {
+   "from": "lem:deeppole",
+   "to": "thm:leafkill",
+   "note": "independent PAIR-level kill on the strict-collapse subclass of SINGLE-EDGE nodes; not consumed by the proof"
+  },
+  {
+   "from": "lem:reach",
+   "to": "thm:leafkill",
+   "note": "structure-layer reachability (polyhedron); no kill consumes it after rev-3.5"
+  },
+  {
+   "from": "prop:deck",
+   "to": "thm:UCK",
+   "note": "independent pre-UCK cell route / sharpness layer (round-11 J2 retype)"
+  },
+  {
+   "from": "thm:ferry",
+   "to": "thm:UCK",
+   "note": "independent pre-UCK cell route / sharpness layer (round-11 J2 retype)"
+  },
+  {
+   "from": "thm:fertile",
+   "to": "thm:UCK",
+   "note": "independent pre-UCK cell route / sharpness layer (round-11 J2 retype)"
+  },
+  {
+   "from": "thm:fertility",
+   "to": "thm:UCK",
+   "note": "independent pre-UCK cell route / sharpness layer (round-11 J2 retype)"
+  },
+  {
+   "from": "thm:rigidity",
+   "to": "thm:UCK",
+   "note": "independent pre-UCK cell route / sharpness layer (round-11 J2 retype)"
+  },
+  {
+   "from": "thm:trace",
+   "to": "thm:UCK",
+   "note": "independent pre-UCK cell route / sharpness layer (round-11 J2 retype)"
+  }
+ ]
+}
