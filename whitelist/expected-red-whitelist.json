@@ -1,0 +1,121 @@
+{
+  "schema": {
+    "version": "1.0",
+    "purpose": "Machine-readable canonical whitelist of expected-RED / retired executable snapshots for the Line Theorem witness repository. Round-pinned auditor snapshots assert a PRIOR revision's exact state and go RED by design when that state is later repaired; they are never 'fixed' and never count as findings. This file gives them the manuscript path, per-artifact hash, and row schema the GPT-Pro referee (finding 12, 2026-07-31) found missing.",
+    "row_fields": {
+      "id": "artifact filename in the repository root",
+      "expected_signature": "verified behaviour: 'exit_nonzero' (red by design), 'exit_zero' (documented green archive), or 'non_executable'",
+      "pins": "the prior-revision state this snapshot asserts",
+      "red_since": "the revision at which the pinned state was repaired, making this artifact go red",
+      "sha256": "SHA-256 of the artifact as of rev-3.11 (immutable pin target)",
+      "verified_rc": "actual exit code observed on the rev-3.11 tree (2026-07-31)"
+    },
+    "gate_rule": "Everything else in the repository root must be GREEN under its documented invocation; any other red is a finding. When a repair moves state that an auditor snapshot pins, ADD THE SNAPSHOT HERE in the same commit as the repair (POST-AUDIT-FOLD-CHECKLIST.md lines 100-102)."
+  },
+  "manuscript": {
+    "revision": "rev-3.11",
+    "manuscript_source": "paper-3b.tex",
+    "manuscript_sha256": "696178fd355e74a2daef6e9e2515785cd7dde284c9ac48704ec4657336910afa",
+    "manuscript_circulation_note": "paper-3b.tex is an internal working copy, not for circulation until rev-4; it is NOT shipped inside the rev-3.11-witness tag. The hash above pins provenance only. check_theorem_graph.py G7/G7b require this source to run in full (see PUSH-PLAN).",
+    "canonical_source_of_rows": "POST-AUDIT-FOLD-CHECKLIST.md, section 'EXPECTED-RED WHITELIST' (round-11 M5, extended through round-13)",
+    "generated": "2026-07-31 (B5 prep, jc lane)"
+  },
+  "entries": [
+    {
+      "id": "codexchk_round9_graph.py",
+      "expected_signature": "exit_nonzero",
+      "verified_rc": 1,
+      "pins": "66-entry ledger",
+      "red_since": "rev-3.5 (ledger grew to 72+; now 76)",
+      "sha256": "d1fbc51229aa0414e6534ebff386427e892ce92e3bd106c8072888399566e1af"
+    },
+    {
+      "id": "codexchk_round10_laws_puiseux.py",
+      "expected_signature": "exit_nonzero",
+      "verified_rc": 1,
+      "pins": "lem:I1 ABSENT",
+      "red_since": "rev-3.6 (I1 in-paper)",
+      "sha256": "8c883b9973dc0c3b1c6c22475a3a3a62cc3714518d8f013d3de5ece6d973badf"
+    },
+    {
+      "id": "codexchk_round10_graph.py",
+      "expected_signature": "exit_nonzero",
+      "verified_rc": 1,
+      "pins": "rev-3.5/3.6 graph IDs",
+      "red_since": "graph v2",
+      "sha256": "6e668bf58afcf87f5e9450cabc9d542bdf00c547b53aed1dbfe591667fde2661"
+    },
+    {
+      "id": "codexchk_round10b_graph.py",
+      "expected_signature": "exit_nonzero",
+      "verified_rc": 1,
+      "pins": "rev-3.6 hidden-citation set",
+      "red_since": "rev-3.7 (set now empty)",
+      "sha256": "b1822ca6e76651fc85b452aad8ab196140328993a66502698c8919455df3a395"
+    },
+    {
+      "id": "codexchk_round10c_graph.py",
+      "expected_signature": "exit_nonzero",
+      "verified_rc": 1,
+      "pins": "rev-3.7 banner text",
+      "red_since": "rev-3.8 (banner moved)",
+      "sha256": "7a2d3237826be86bea09d529a81300d58c3437053555c7d2952a3e1a0bc350c2"
+    },
+    {
+      "id": "peel_rig_standalone.py",
+      "expected_signature": "exit_nonzero",
+      "verified_rc": 1,
+      "pins": "stale runner, nan extraction",
+      "red_since": "RETIRED round-11; maintained faces green",
+      "sha256": "ad517d2fe36ea5c143f1e664a13f39cd0d6e97574fcfe5713eac334e3d0fd360"
+    },
+    {
+      "id": "leaf_taxonomy_sweep.py",
+      "expected_signature": "exit_zero",
+      "verified_rc": 0,
+      "pins": "v1 KNOWN-BUGGY archive, exit 0",
+      "red_since": "kept for audit trail; never relied on (documented green)",
+      "sha256": "1322216a6e482946c72623a0bff700ecc8bad9857be4d6bf5ed7987696656c99"
+    },
+    {
+      "id": "codexchk_round11_graph_scope.py",
+      "expected_signature": "exit_nonzero",
+      "verified_rc": 1,
+      "pins": "rev-3.8 custody digests + the round-11 pre-repair defect set",
+      "red_since": "rev-3.9 (repairs landed; digests moved)",
+      "sha256": "b677c8f81943bef7a37003c5045861c4fa643bf6cd9658a2fca14ff0fb54eb42"
+    },
+    {
+      "id": "codexchk_round12_graph_semantics.py",
+      "expected_signature": "exit_nonzero",
+      "verified_rc": 1,
+      "pins": "rev-3.9 graph state (thm:C-in-UCK.math, v2 headers, missing fields)",
+      "red_since": "rev-3.10 (alias re-encoding)",
+      "sha256": "dd0939c4aa6af5a1f42f9d17fc9d55f1abf8614398b897d5574489c7222b642d"
+    },
+    {
+      "id": "codexchk_round12_integrity_scope.py",
+      "expected_signature": "exit_nonzero",
+      "verified_rc": 1,
+      "pins": "rev-3.9 remnants (jewel prose, 'exactly six' guide, stale pending-line, unannotated titles)",
+      "red_since": "rev-3.10 (remnants purged)",
+      "sha256": "8f0a3b19bbe544d791d6eae04f563e93ed2ba89e8713de436ca08fc2139c9c5b"
+    },
+    {
+      "id": "codexchk_round12_machine_whitelist.py",
+      "expected_signature": "exit_nonzero",
+      "verified_rc": 1,
+      "pins": "the round-12 nine-row gate state (asserts exactly nine whitelisted artifacts)",
+      "red_since": "rev-3.10 (whitelist grew to 11, now 12 rows). NOTE: round-13 flagged this artifact as an unwhitelisted red (finding 6.2); it is now whitelisted here. A rev-4 decision is owed on whether to retire it as an immutable snapshot or promote it to a maintained gate that reads this JSON.",
+      "sha256": "a72c6b6cf5a14fe7a2aa5dac81c46b792d2afab7d83167def400da897e1d0ba2"
+    },
+    {
+      "id": "_cache_peel.py",
+      "expected_signature": "non_executable",
+      "verified_rc": null,
+      "pins": "scratch cache, not a rig",
+      "red_since": "not executable",
+      "sha256": "6210405751bcd139a9748af77117b6bdf9a2d9806ee1e80412317c1f3c7d72d4"
+    }
+  ]
+}
